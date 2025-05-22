@@ -8,13 +8,21 @@ import requests
 import urllib.parse
 import json
 import logging
+import threading
+import tkinter as tk
 logging.basicConfig(level=logging.INFO)
 from discord.ext import commands
+transparencyshift = 0
+h = False
+c = False
+print(f"By .lunary on dicsord blah blah blah")
 """IF YOU'RE USING .PY VERSION MAKE SURE TO GET ALL THE IMPORTS WITH PIP. (pip install requests for example) """
+
 def get_base_path():
-    if getattr(sys, 'frozen', False):  # PyInstaller sets this when bundled
-        return sys._MEIPASS
-    return os.path.dirname(os.path.abspath(__file__))
+    if getattr(sys, 'frozen', False):  # Running as .exe (PyInstaller)
+        return os.path.dirname(sys.executable)
+    else:  # Running as .py
+        return os.path.dirname(os.path.abspath(__file__))
 
 config_path = os.path.join(get_base_path(), 'config.json')
 
@@ -23,7 +31,7 @@ try:
         config = json.load(f)
 except Exception as e:
     print(f"Failed to load config.json: {e}")
-    exit()
+    sys.exit()
     
 GlitchEnabled = config.get("GlitchEnabled", True)
 DreamspaceEnabled = config.get("DreamspaceEnabled", True)
@@ -34,7 +42,7 @@ robloxCookie = config.get("robloxCookie", "")
 if token  == "":
     print("No discord token provided")
     time.sleep(3)
-    exit()
+    sys.exit()
     
 def format_keywords(keywords):
     return [keyword.replace("<space>", " ") for keyword in keywords]
@@ -113,6 +121,9 @@ async def on_ready():
 
 @bot.event
 async def on_message(message: discord.Message):
+    global h
+    if h == False:
+        return
     if message.guild is None:
         return
 
@@ -166,7 +177,7 @@ async def on_message(message: discord.Message):
         
         if not x_csrf_token:
             print("Failed to get CSRF token. Check if your Roblox cookie is valid or try again later if it is rate-limited.")
-            exit()
+            return
         
         res = requests.post(
             "https://apis.roblox.com/sharelinks/v1/resolve-link",
@@ -199,8 +210,138 @@ async def on_message(message: discord.Message):
         print(f"opened with matched keyword: '{matched_keyword}' at link '{url}'")
     else:
         print(f"PREVENTED JOINING A NON SOL'S RNG GAME.")
+        
+        
+def start_bot():
+    try:
+        bot.run(token, bot=False)
+    except Exception as e:
+        print(f"Bot error: {e}")
 
-bot.run(token, bot=False)
+# ---------- Tkinter GUI setup ---------- 
+
+def toggle():
+    global h
+    global c
+    if not c:
+        c = True
+        threading.Thread(target=start_bot, daemon=True).start()  # ✅ run bot in background
+    if h:
+        h = False
+        toggle_button.config(text="Stopped")
+        print("Paused the Message detection")
+    else:
+        h = True
+        toggle_button.config(text="Running")
+        print("Resumed the Message detection")
+
+def start_move(event):
+    root._drag_start_x = event.x_root
+    root._drag_start_y = event.y_root
+
+def do_move(event):
+    dx = event.x_root - root._drag_start_x
+    dy = event.y_root - root._drag_start_y
+    x = root.winfo_x() + dx
+    y = root.winfo_y() + dy
+    root.geometry(f"+{x}+{y}")
+    root._drag_start_x = event.x_root
+    root._drag_start_y = event.y_root
+
+
+def toggle_transparency():
+    global transparencyshift
+    transparency_levels = [1, 0.75, 0.5, 0.25]
+    
+    transparencyshift = (transparencyshift + 1) % len(transparency_levels)
+    root.attributes('-alpha', transparency_levels[transparencyshift])
+
+root = tk.Tk()
+root.geometry('247x24+50+50')
+root.resizable(False, False)
+root.attributes('-topmost', 1)
+root.overrideredirect(True)
+root.title("AntiIdle")
+
+frame = tk.Frame(root, bg="gray20", height=30)
+frame.pack(fill=tk.BOTH, expand=True)
+frame.bind("<Button-1>", start_move)
+frame.bind("<B1-Motion>", do_move)
+
+close_btn = tk.Button(frame, text="X", command=root.destroy, bg="#222", fg="white", bd=0, font=("Segoe UI", 10, "bold"), takefocus=0, highlightthickness=0)
+close_btn.place(x=203, y=2, width=20, height=20)
+
+toggle_button = tk.Button(
+    frame,
+    text="Start sniping",
+    command=toggle,
+    bg="#222",           
+    fg="white",          
+    activebackground="#444",  
+    activeforeground="white",
+    highlightthickness=0,
+    bd=0,
+    takefocus=0,              
+    font=("Segoe UI", 10, "bold"),
+    relief="flat",       
+    cursor="hand2"
+)
+toggle_button.place(x=2, y=2,width=177, height=20)
+
+# Transparency toggle button
+transparency_button = tk.Button(
+    frame,
+    text="I",
+    command=toggle_transparency,
+    width=20,
+    height=2,
+    bg="#222",           
+    fg="white",          
+    activebackground="#444",  
+    activeforeground="white",
+    highlightthickness=0,
+    bd=0,
+    takefocus=0,             
+    font=("Segoe UI", 10, "bold"),
+    relief="flat",       
+    cursor="hand2"
+)
+transparency_button.place(x=181, y=2, width=20, height=20)
+
+def on_transparency_button_enter(e):
+    transparency_button.config(bg="#444", fg="white")
+
+def on_transparency_button_leave(e):
+    transparency_button.config(bg="#222", fg="white")
+
+# Hover effects for the toggle button
+def on_toggle_button_enter(e):
+    toggle_button.config(bg="#444", fg="white")
+
+def on_toggle_button_leave(e):
+    toggle_button.config(bg="#222", fg="white")
+
+# Hover effects for the close button
+def on_close_button_enter(e):
+    close_btn.config(bg="#444", fg="white")
+
+def on_close_button_leave(e):
+    close_btn.config(bg="#222", fg="white")
+
+# Bind hover effects to buttons
+transparency_button.bind("<Enter>", on_transparency_button_enter)
+transparency_button.bind("<Leave>", on_transparency_button_leave)
+
+toggle_button.bind("<Enter>", on_toggle_button_enter)
+toggle_button.bind("<Leave>", on_toggle_button_leave)
+
+close_btn.bind("<Enter>", on_close_button_enter)
+close_btn.bind("<Leave>", on_close_button_leave)
+
+
+# Run the GUI
+root.mainloop()
+# ---------- Tkinter GUI setup ---------- 
 
 
 """ if i got you into glitch biome, put a star at https://github.com/Lunatic-T/PySniper!"""
