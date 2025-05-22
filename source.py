@@ -19,7 +19,7 @@ print(f"By .lunary on dicsord blah blah blah")
 """IF YOU'RE USING .PY VERSION MAKE SURE TO GET ALL THE IMPORTS WITH PIP. (pip install requests for example) """
 
 def get_base_path():
-    if getattr(sys, 'frozen', False):  # Running as .exe (PyInstaller)
+    if getattr(sys, 'frozen', False): 
         return os.path.dirname(sys.executable)
     else:  # Running as .py
         return os.path.dirname(os.path.abspath(__file__))
