@@ -3,6 +3,13 @@ Glitch / Dreamspace biome Sniper
  
 The .exe does not require Python or any import installs.
 
+This might pop up:
+
+![image](https://github.com/user-attachments/assets/a9c9524e-dde8-4047-bdcc-c8f8c6245126)
+
+This happens with every program that does not have a certificate
+
+i am NOT spending 400$ a month for a certificate, so click run anyway
 
 
 > ### If you want to use the .py version you must:
