@@ -10,6 +10,7 @@ the exe is made for people who dont wanna go through the trouble of installing p
 
 > ### If you want to use the .py version you must:
 >> Download [Python 3.11.](https://www.python.org/downloads/release/python-3110/)
+>>
 >> In the Python installation you must click add python to PATH.
 
 # EDIT THE CONFIG.JSON FILE BEFORE RUNNING!!!
