@@ -2,11 +2,10 @@
 Glitch / Dreamspace biome Sniper
  
 .exe is 10/72 on virustotal
-
-            \|
-            \\/
+### ↓ ↓ ↓ ↓ ↓
 
 this is mostly because this is a compiled python script.
+
 the exe is made for people who dont wanna go through the trouble of installing python 3.11.
 
 > ### If you want to use the .py version you must:
