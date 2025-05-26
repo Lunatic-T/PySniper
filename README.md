@@ -20,9 +20,9 @@ Glitch / Dreamspace biome Sniper
 >>
 >> Your discord token (to run the link detection ofc 💀)
 
-# For the .exe: "Windows protected your PC"
+### For the .exe: "Windows protected your PC"
 
-![image](https://github.com/user-attachments/assets/a9c9524e-dde8-4047-bdcc-c8f8c6245126)
+> ![image](https://github.com/user-attachments/assets/a9c9524e-dde8-4047-bdcc-c8f8c6245126)
 
 > **This happens with every program that does not have a certificate.**
 >
