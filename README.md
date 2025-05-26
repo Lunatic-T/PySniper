@@ -1,4 +1,4 @@
-# python glitch sniper 
+# PySniper 
 Glitch / Dreamspace biome Sniper 
 
 # EDIT THE CONFIG.JSON FILE BEFORE RUNNING!!!
