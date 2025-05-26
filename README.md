@@ -14,7 +14,7 @@ Glitch / Dreamspace biome Sniper
 >>
 >> look inside the python file using a text editor to see the imports you need to download, ill make automatic import install soon.
 
-# EDIT THE CONFIG.JSON FILE BEFORE RUNNING!!!
+# Setup
 > ### You will need: 
 >> Your roblox cookie (for gameid detection; the X-CSRF token is needed to access the share link resolve api)
 >>
