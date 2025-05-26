@@ -10,7 +10,7 @@ Glitch / Dreamspace biome Sniper
 >>
 >> In the Python installation you must click add python to PATH.
 >> 
->> install the imports needed using pip install \[importname]
+>> install the imports needed using [pip](https://pypi.org/project/pip/) install \[importname]
 >>
 >> look inside the python file using a text edit to see the imports for now, ill make automatic import install soon.
 
