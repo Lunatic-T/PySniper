@@ -26,7 +26,7 @@ Glitch / Dreamspace biome Sniper
 
 > **This happens with every program that does not have a certificate.**
 >
-> **i am __NOT__ spending 400$ a month for a certificate, so click run anyway**
+> **i am **NOT** spending 400$ a month for a certificate, so click run anyway**
 
 
 Got a problem? Contact .lunary. on discord
