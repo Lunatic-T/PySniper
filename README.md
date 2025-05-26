@@ -1,7 +1,9 @@
 # PySniper 
 Glitch / Dreamspace biome Sniper
- 
-The .exe does not require Python or any import installs.
+
+![image](https://github.com/user-attachments/assets/c615dd53-d8b2-4dff-8ed2-4fb39f9131d0)
+
+**The .exe does not require Python or any import installs ()**
 
 > ### If you want to use the .py version you must:
 >> Download [Python 3.11.](https://www.python.org/downloads/release/python-3110/)
@@ -18,13 +20,13 @@ The .exe does not require Python or any import installs.
 >>
 >> Your discord token (to run the link detection ofc 💀)
 
-# Windows protected your PC
+# For the .exe: "Windows protected your PC"
 
 ![image](https://github.com/user-attachments/assets/a9c9524e-dde8-4047-bdcc-c8f8c6245126)
 
-> ## This happens with every program that does not have a certificate
-
-> ## i am NOT spending 400$ a month for a certificate, so click run anyway
+> **This happens with every program that does not have a certificate.**
+>
+> **i am [NOT] spending 400$ a month for a certificate, so click run anyway**
 
 
 Got a problem? Contact .lunary. on discord
