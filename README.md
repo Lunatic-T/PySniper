@@ -1,13 +1,18 @@
 # PySniper 
 Glitch / Dreamspace biome Sniper
  
-The .exe is 10/72 on virustotal, this is mostly because it is a compiled python script made to be ran without needing python installed.
+The .exe does not require Python or any import installs.
+
 
 
 > ### If you want to use the .py version you must:
 >> Download [Python 3.11.](https://www.python.org/downloads/release/python-3110/)
 >>
 >> In the Python installation you must click add python to PATH.
+>> 
+>> install the imports needed using pip install \[importname]
+>>
+>> look inside the python file using a text edit to see the imports for now, ill make automatic import install soon.
 
 # EDIT THE CONFIG.JSON FILE BEFORE RUNNING!!!
 > ### You will need: 
