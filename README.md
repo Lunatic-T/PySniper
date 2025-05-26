@@ -6,3 +6,5 @@ Glitch / Dreamspace biome Sniper
 >> Your roblox cookie (for gameid detection; the X-CSRF token is needed to access the share link resolve api)
 >>
 >> Your discord token (to run the link detection ofc 💀)
+
+Got a problem? Contact .lunary. on discord
