@@ -12,7 +12,7 @@ Glitch / Dreamspace biome Sniper
 >> 
 >> install the imports needed using [pip](https://pypi.org/project/pip/) install \[importname]
 >>
->> look inside the python file using a text edit to see the imports for now, ill make automatic import install soon.
+>> look inside the python file using a text editor to see the imports for now, ill make automatic import install soon.
 
 # EDIT THE CONFIG.JSON FILE BEFORE RUNNING!!!
 > ### You will need: 
