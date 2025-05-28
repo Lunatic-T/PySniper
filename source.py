@@ -10,16 +10,16 @@ import json
 import logging
 import threading
 import tkinter as tk
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 from discord.ext import commands
 transparencyshift = 0
 h = False
 c = False
-print(f"By .lunary on dicsord blah blah blah")
+print(f"By \033[94m.lunary. on dicsord blah blah blah")
 """IF YOU'RE USING .PY VERSION MAKE SURE TO GET ALL THE IMPORTS WITH PIP. (pip install requests for example) """
 
 def get_base_path():
-    if getattr(sys, 'frozen', False): 
+    if getattr(sys, 'frozen', False):  # Running as .exe (PyInstaller)
         return os.path.dirname(sys.executable)
     else:  # Running as .py
         return os.path.dirname(os.path.abspath(__file__))
@@ -52,7 +52,7 @@ def convert_to_deeplink(link: str) -> str | None:
     regex_share = re.compile(r"https:\/\/www\.roblox\.com/share\?code=([a-zA-Z0-9]+)")
     # Regex to match game link with optional privateServerLinkCode param
     regex_private = re.compile(
-        r"https:\/\/www\.roblox\.com/games/15532962292/[^\s?]+(?:\?privateServerLinkCode=([a-zA-Z0-9]+))?"
+        r"https:\/\/www\.roblox\.com/games/15532962292(?:\/[^\s?]+)?(?:\?privateServerLinkCode=([a-zA-Z0-9]+))?"
     )
 
     match_share = regex_share.match(link)
@@ -109,15 +109,15 @@ def fetch_keywords(url):
 url = "https://raw.githubusercontent.com/Lunatic-T/Websniper/refs/heads/main/Keywords.json"
 GKeywords, DKeywords, IKeywords = fetch_keywords(url)
 
-print("✅ GKeywords:", GKeywords)
-print("✅ DKeywords:", DKeywords)
-print("✅ IKeywords:", IKeywords)
+# print("GKeywords:", GKeywords)
+# print("DKeywords:", DKeywords)
+# print("IKeywords:", IKeywords)
 
 bot = commands.Bot("", self_bot=True)
 
 @bot.event
 async def on_ready():
-    print("Glitch filtering sniper is online")
+    print(f"\033[94mStarted bot")
 
 @bot.event
 async def on_message(message: discord.Message):
@@ -140,14 +140,13 @@ async def on_message(message: discord.Message):
     urls = re.findall(r'https?://\S+', content)
     if not urls:
         return
-    print(content)
+    
     # Check if message contains any required keyword from G or D lists
     matched_keyword = None
     for kw in GKeywords:
         if kw.lower() in content.lower():
             matched_keyword = kw
             if GlitchEnabled:
-                print("glitch")
                 break
             else:
                 matched_keyword = None
@@ -158,15 +157,21 @@ async def on_message(message: discord.Message):
             if kw.lower() in content.lower():
                 matched_keyword = kw
                 if DreamspaceEnabled:
-                    print("dreamspace")
                     break
                 else:
                     matched_keyword = None
 
     if matched_keyword is None:
         return
-
+        
+    print("\n\033[91m-----------------------------------------------------------------\033[0m\n")
+    print(f"\033[92m{content}")
+    url = urls[0]
+    print(url)
+    webbrowser.open(convert_to_deeplink(url))
+    print("\033[92mjoined instantly, leaving if fake")
     if extract_share_code(urls[0]):
+        start = time.perf_counter()
         SHARE_LINK_CODE = extract_share_code(urls[0])
         
         csrf_req = requests.post(
@@ -190,26 +195,38 @@ async def on_message(message: discord.Message):
             data = res.json()
             i = data.get("privateServerInviteData")
             if not i:
-                print("Could not find privateServerInviteData in response.")
-                print(res.text)
+                print("\033[91mCould not find privateServerInviteData in response.")
+                print(f"\033[91m{res.text}")
                 return
             param1 = i.get("placeId")
             param2 = i.get("ownerUserId")
             param3 = i.get("linkCode")
-            print(data)
-            print(f'gameid: {param1}')
-            print(f'private server owner: {param2}')
-            print(f'privateserverlink: {param3}')
+            print(f"\033[90m{data}")
+            if str(param1).strip() == "15532962292":
+                print(f'\033[92mgameid: {param1}')
+            else:
+                print(f'\033[91mgameid: {param1}')
+            
+            print(f'\033[92mprivate server owner: {param2}')
+            print(f'\033[92mprivateserverlink: {param3}')
         else:
-            print("Error:", res.status_code, res.text)
+            print(f"\033[91mError: {res.status_code}{res.text}")
             input("press enter to continue")
 
-    url = urls[0]
     if str(param1).strip() == "15532962292":
-        webbrowser.open(convert_to_deeplink(url))
-        print(f"opened with matched keyword: '{matched_keyword}' at link '{url}'")
+        end = time.perf_counter()
+        dur = end - start
+        if dur < 0.75:
+            print(f"Took: \033[92m{dur:.4f}\033[0m seconds to verify gameid")  # green
+        else:
+            print(f"Took: \033[91m{dur:.4f}\033[0m seconds to verify gameid")  # red
+        print(f"\033[92opened with matched keyword: \033[93m'{matched_keyword}' at link \033[95m'{url}'")
+        print("\n\033[91m-----------------------------------------------------------------\033[0m\n")
     else:
-        print(f"PREVENTED JOINING A NON SOL'S RNG GAME.")
+        urlsafe = "https://www.roblox.com/games/15532962292?privateServerLinkCode=84851469547452852766157119385988"
+        webbrowser.open(convert_to_deeplink(urlsafe))
+        print(f"\033[91m!! REDIRECTING TO A SAFE SOLS RNG PRIVATE SERVER TO PREVENT JOINING A NON SOL'S RNG GAME. !!")
+        print("\n\033[91m-----------------------------------------------------------------\033[0m\n")
         
         
 def start_bot():
@@ -229,11 +246,11 @@ def toggle():
     if h:
         h = False
         toggle_button.config(text="Stopped")
-        print("Paused the Message detection")
+        print(f"\033[94mStopped Message detection")
     else:
         h = True
         toggle_button.config(text="Running")
-        print("Resumed the Message detection")
+        print(f"\033[94mStarted Message detection")
 
 def start_move(event):
     root._drag_start_x = event.x_root
