@@ -1,4 +1,4 @@
-# PySniper 
+# PySniper (CURRENTLY NOT WORKING, I DONT KNOW WHEN ILL RELEASE A WORKING VER)
 Glitch / Dreamspace biome Sniper
 
 ![image](https://github.com/user-attachments/assets/c615dd53-d8b2-4dff-8ed2-4fb39f9131d0)
