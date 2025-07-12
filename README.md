@@ -6,8 +6,7 @@ Glitch / Dreamspace biome Sniper Filled with Features!
 
 **The .exe does not require Python or any import installs**
 
-> ### If you want to use the .py version you must:
->> Download [Python 3.11.](https://www.python.org/downloads/release/python-3110/)
+### If you want to use the .py version you must use [Python 3.11.](https://www.python.org/downloads/release/python-3110/)
 
 # Setup
 > ### You will need: 
