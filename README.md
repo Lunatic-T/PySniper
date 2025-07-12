@@ -1,7 +1,8 @@
 # PySniper v1.4.4 public beta
 Glitch / Dreamspace biome Sniper Filled with Features!
 
-<img width="658" height="605" alt="image" src="https://github.com/user-attachments/assets/e75d2ac0-dde8-4e84-960b-ebcc9db5ebca" />
+
+<img width="578" height="488" alt="image" src="https://github.com/user-attachments/assets/0f429a38-1a3d-46c4-8c9b-28062fe54bec" />
 
 
 
