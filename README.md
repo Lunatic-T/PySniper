@@ -1,7 +1,7 @@
 # PySniper v1.4.4 public beta
 Glitch / Dreamspace biome Sniper Filled with Features!
 
-<img width="1052" height="968" alt="image" src="https://github.com/user-attachments/assets/e75d2ac0-dde8-4e84-960b-ebcc9db5ebca" />
+<img width="526" height="484" alt="image" src="https://github.com/user-attachments/assets/e75d2ac0-dde8-4e84-960b-ebcc9db5ebca" />
 
 
 **The .exe does not require Python or any import installs**
