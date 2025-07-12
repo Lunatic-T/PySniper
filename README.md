@@ -4,7 +4,6 @@ Glitch / Dreamspace biome Sniper Filled with Features!
 <img width="658" height="605" alt="image" src="https://github.com/user-attachments/assets/e75d2ac0-dde8-4e84-960b-ebcc9db5ebca" />
 
 
-**The .exe does not require Python or any import installs**
 
 ### If you want to use the .py version you must use [Python 3.11.](https://www.python.org/downloads/release/python-3110/)
 
