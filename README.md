@@ -7,9 +7,7 @@ Glitch / Dreamspace biome Sniper Filled with Features!
 
 ### If you want to use the .py version you must use [Python 3.11.](https://www.python.org/downloads/release/python-3110/)
 
-# Setup
-> ### You will need: 
->> Your discord token or one with access to the sols rng private servers
+### Setup is automatic!
 
 ### For the .exe: "Windows protected your PC"
 
