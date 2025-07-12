@@ -7,6 +7,20 @@ Glitch / Dreamspace biome Sniper Filled with Features!
 
 ### If you want to use the .py version you must use [Python 3.11.](https://www.python.org/downloads/release/python-3110/)
 
+# This Sniper Features
+* Blacklisting of userid and private server link (automatic)
+
+* Multisnipe; Will only allow the servers and channels you put in to be sniped!
+
+* Ignoring Message if message author's account is too new. (default: 7+ days old only)
+
+* Toggling whether you want to see Ignored Messages or not
+
+* GameID Detection; Will Kick You from the Game if the sniped link's game is not Sol's RNG (to protect you)
+
+* A Prebuilt Keyword System (which i manage, i do update it a lot)
+
+* Detects Biome when you snipe a Link
 
 ### For the .exe: "Windows protected your PC"
 
