@@ -1,4 +1,4 @@
-# PySniper v1.4.4 public beta
+# PySniper v1.4.4 public beta (new versions to come when .. its not gatekept anymore)
 Glitch / Dreamspace biome Sniper Filled with Features!
 
 
